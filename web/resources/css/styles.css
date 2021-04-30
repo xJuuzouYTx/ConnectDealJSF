@@ -1,0 +1,380 @@
+*{
+    font-family: sans-serif;
+}
+body{
+    background:  #f6dfeb;
+    justify-content: center;  
+    padding: 0;
+}
+.container{    
+    margin: auto;
+    max-width: 800px;
+    margin-top: 100px;
+    position: relative;
+    justify-content: center;
+}
+.card{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+
+.card div p, card div button{
+    margin-top: 30px;
+}
+.card button{
+    padding: 10px 40px;
+    border: 2px solid #fff;
+    background: transparent;
+    font-size: 14px;
+    cursor: pointer;
+    outline:none;
+    color: white;
+    transition: all 200ms;
+}
+.card button:hover{
+    background: #fff;
+    color: #46A2FD;
+}
+.cardForm {
+    position: relative;
+    display:flex;
+    align-items: center;
+    align-content: center;
+    max-width: 350px; 
+    margin: auto;
+}
+.cardForm form{
+    position: absolute;
+    top: 10px;
+    left: -20px;
+    width: 100%;
+    padding: 20px 20px 20px 20px;
+    background-color: #EDFFEC;
+   
+}
+.cardForm form h2{
+    font-size: 30px;
+    text-align: center;
+    color: #46A2FD;
+    margin-bottom: 20px;
+}
+.cardForm form input[type=text], .cardForm form input[type=password], .cardForm form input[type=email]{
+    margin: auto;
+    width: 330px;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #F6DFEB;
+    font-size: 16px;
+    outline: none;
+    
+}
+.cardForm form .button{
+    margin: auto;
+    width: 330px;
+    padding: 10px;
+    margin-top: 20px;
+    background: #F6DFEB;
+    outline: none;
+    border-style: none;
+    cursor: pointer;
+}
+
+.cardForm .captcha{
+    width: 300px;
+    justify-content: center;
+    padding: 10px;
+    align-content: center;
+    text-align: center;
+    margin: auto;
+}
+.loginForm{  
+    display: block;
+}
+.signUpForm{
+    display: none;
+}
+.cardSignUp{
+    display: block;
+    width: 175px;
+    text-align: center;
+    padding: 20px 20px;
+    top: 160px;
+    right: 0px;
+    background-color: #E4BAD4;
+    position: absolute;
+    color: white;
+    animation-name: cardSignUp;
+    animation-duration: 2s;
+}
+@keyframes cardSignUp{
+    0%{
+       right: 160px;
+    }
+    100%{
+     right: 0px;
+    }
+}
+.cardSignUp h3{
+    margin-right: 20px;
+}
+.cardLogin{
+    text-align: center;
+    width: 175px;
+    display: none;
+    padding: 20px 20px;
+    top: 170px;
+    left: 0;
+    background-color: #E4BAD4;
+    position: absolute;
+    color: white;
+    animation-name: cardLogin;
+    animation-duration: 2s;
+}
+@keyframes cardLogin{
+    0%{
+       left: 160px;
+    }
+    100%{
+       left: 0px;
+    }
+}
+
+
+.shared-panel{
+    display: block;
+    width: 146px;
+    margin: auto;
+    margin-top: 20px;
+    align-items: center;
+}
+.shared-panel a{
+    text-align: center;
+}
+.fab {
+    width: 20px; 
+    height: 20px;
+    padding: 8px; 
+    background: #e1e1e1;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.fab:hover{
+    opacity: 0.7;
+}
+
+.cardVerify{
+    justify-content: center;
+    padding: 20px 30px;  
+    width: 350px;
+    background: #fff;
+    margin: auto;
+    border-radius: 20px;
+    
+}
+
+.formVerify input[type=button]{
+    padding:10px 40px;
+    margin-top: 40px;
+    font-size: 14px;
+    background: #1A73E8;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    border-style: none;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.formVerify input[type=text]{
+    margin: auto;
+    width: 100px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 7px;
+    margin-top: 20px;
+    border: none;
+    background: #e1e1e1;
+    font-size: 16px;
+    outline: none;
+    display: block;
+}
+
+.alert {
+    position: absolute;
+    width: 400px;
+    z-index: 2;
+     position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    display: none;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.load{
+    display: none;
+     background: rgba(0,0,0,.3);
+     width:  99%;
+     top: 0;
+     left: 0;
+     padding: 0;
+     margin: 0;
+     position:  fixed;
+     height:100vh;
+     z-index: 1;
+     justify-content: center;
+     align-items: center;
+     align-content: center;
+}
+/*Loader*/
+.loader {
+    font-size: 20px;
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    margin: auto;
+    text-indent: -9999em;
+    -webkit-animation: load4 1.3s infinite linear;
+    animation: load4 1.3s infinite linear;
+ 
+}
+@-webkit-keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0em -3em 0em 0.2em #ffffff, 2em -2em 0 0em #ffffff, 3em 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em #ffffff, -2em 2em 0 -0.5em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 0em #ffffff;
+  }
+  12.5% {
+    box-shadow: 0em -3em 0em 0em #ffffff, 2em -2em 0 0.2em #ffffff, 3em 0em 0 0em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em #ffffff, -2em 2em 0 -0.5em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 -0.5em #ffffff;
+  }
+  25% {
+    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 0em #ffffff, 3em 0em 0 0.2em #ffffff, 2em 2em 0 0em #ffffff, 0em 3em 0 -0.5em #ffffff, -2em 2em 0 -0.5em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 -0.5em #ffffff;
+  }
+  37.5% {
+    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em 0em 0 0em #ffffff, 2em 2em 0 0.2em #ffffff, 0em 3em 0 0em #ffffff, -2em 2em 0 -0.5em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 -0.5em #ffffff;
+  }
+  50% {
+    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em 0em 0 -0.5em #ffffff, 2em 2em 0 0em #ffffff, 0em 3em 0 0.2em #ffffff, -2em 2em 0 0em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 -0.5em #ffffff;
+  }
+  62.5% {
+    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 0em #ffffff, -2em 2em 0 0.2em #ffffff, -3em 0em 0 0em #ffffff, -2em -2em 0 -0.5em #ffffff;
+  }
+  75% {
+    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em #ffffff, -2em 2em 0 0em #ffffff, -3em 0em 0 0.2em #ffffff, -2em -2em 0 0em #ffffff;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0em 0em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em #ffffff, -2em 2em 0 0em #ffffff, -3em 0em 0 0em #ffffff, -2em -2em 0 0.2em #ffffff;
+  }
+}
+@keyframes load4 {
+  0%,
+  100% {
+    box-shadow: 0em -3em 0em 0.2em #ffffff, 2em -2em 0 0em #ffffff, 3em 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em #ffffff, -2em 2em 0 -0.5em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 0em #ffffff;
+  }
+  12.5% {
+    box-shadow: 0em -3em 0em 0em #ffffff, 2em -2em 0 0.2em #ffffff, 3em 0em 0 0em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em #ffffff, -2em 2em 0 -0.5em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 -0.5em #ffffff;
+  }
+  25% {
+    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 0em #ffffff, 3em 0em 0 0.2em #ffffff, 2em 2em 0 0em #ffffff, 0em 3em 0 -0.5em #ffffff, -2em 2em 0 -0.5em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 -0.5em #ffffff;
+  }
+  37.5% {
+    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em 0em 0 0em #ffffff, 2em 2em 0 0.2em #ffffff, 0em 3em 0 0em #ffffff, -2em 2em 0 -0.5em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 -0.5em #ffffff;
+  }
+  50% {
+    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em 0em 0 -0.5em #ffffff, 2em 2em 0 0em #ffffff, 0em 3em 0 0.2em #ffffff, -2em 2em 0 0em #ffffff, -3em 0em 0 -0.5em #ffffff, -2em -2em 0 -0.5em #ffffff;
+  }
+  62.5% {
+    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 0em #ffffff, -2em 2em 0 0.2em #ffffff, -3em 0em 0 0em #ffffff, -2em -2em 0 -0.5em #ffffff;
+  }
+  75% {
+    box-shadow: 0em -3em 0em -0.5em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em #ffffff, -2em 2em 0 0em #ffffff, -3em 0em 0 0.2em #ffffff, -2em -2em 0 0em #ffffff;
+  }
+  87.5% {
+    box-shadow: 0em -3em 0em 0em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em #ffffff, -2em 2em 0 0em #ffffff, -3em 0em 0 0em #ffffff, -2em -2em 0 0.2em #ffffff;
+  }
+}
+
+/*Responsive*/
+
+@media screen and (max-width: 800px){
+    .container{
+        margin-top: 50px;
+    }
+    .cardSignUp{
+        max-width: 350px;
+        height: 300px;
+        margin: auto;
+        top: -40px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        animation-name: cardTop;
+        animation-duration: 2s;
+    }
+    .cardSignUp h3, .cardSignUp p{
+        display: none;
+    }
+    @keyframes cardTop{
+        0%{
+           top: 50px;
+        }
+        100%{
+           top: -40px;
+        }
+    }
+     .cardLogin{
+        max-width: 350px;
+        height: 300px;
+        margin: auto;
+        top: -40px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        animation-name: cardTop;
+        animation-duration: 2s;
+    }
+    .cardLogin h3, .cardLogin p{
+        display: none;
+    }
+    @keyframes cardTop{
+        0%{
+           top: 50px;
+        }
+        100%{
+           top: -40px;
+        }
+    }
+    .cardForm{
+        top: 20px;
+        left: -5px;
+        margin: auto;
+    }
+    .cardForm form{
+        position: relative;
+    }
+}
+

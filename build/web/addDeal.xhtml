@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+       <h:head>
+           <h:outputStylesheet name="css/addDeals.css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ConnectDeal</title>
+        <meta name='viewport' 
+              content='width=device-width, initial-scale=1.0, maximum-scale=1.0, 
+              user-scalable=0' >
+    </h:head>
+    <h:body>
+        <div class="container" id="container">
+            <h1 class="text-center" id="title">Registrar Negocio</h1>
+         <--   <h:form class="registration-form"  enctype = "multipart/form-data">
+                <div class="flip-card-front" id="card-front">
+                    <div class="image-upload">
+                        <label for="file-input">
+                            <img  id="blah" width="150" height="150" src="https://icon-library.net/images/upload-photo-icon/upload-photo-icon-21.jpg"/>
+                        </label>
+                        <input id="file-input" onchange="readURL(this);"  type="file" required accept="image/jpeg, image/png"/>
+                        <div style="display: none;">
+                            <input name="photo" type="text" id="photo">
+                        </div>
+                    </div>
+                    <label>
+                        <span class="label-text">Nombre</span>
+                        <input type="text" name="name" autocomplete="off" required>
+                    </label>
+                    <label>
+                        <span class="label-text-description">Descripción</span>
+                        <textarea type="text" name="description" required> </textarea>
+                    </label>
+                    <label>
+                        <span class="label-text">Ubicación</span>
+                        <input type="text" id="location" required autocomplete="off">
+                    </label>
+                    <div class="coordinates" style="display: none;" >
+                        <input id="latitud" name="lat" type="text" value="" >
+                        <input id="longitud" type="text" name="lng" value="" >
+                    </div>
+                    <div class="comprobe">
+                        <input id="comprobeLocation" type="button" value="Comprobar Dirección">
+                    </div>
+                    <div id="map" class="map"></div>
+                    <div class="text-center">
+                        <input value="Continuar" id="flip" type="button">
+                    </div>
+                </div>
+                <div class="flip-card-back" id="backCard">
+                    <div class="text-center">
+                        <input value="Volver" id="backFlip" type="button">
+                    </div>
+                     <label>
+                        <span class="label-text">Telefono</span>
+                        <input type="text" name="phone" autocomplete="off" required>
+                    </label>
+                    <label>
+                        <span class="label-text-description">Faceboock</span>
+                        <input type="text" name="facebook" autocomplete="off" required>
+                    </label>
+                    <label>
+                        <span class="label-text-description">Instagram</span>
+                        <input type="text" name="instagram" autocomplete="off" required>
+                    </label>
+                    <label>
+                        <span class="label-text-description">Twitter</span>
+                        <input type="text" name="twitter" autocomplete="off" required>
+                    </label>
+                    <label>
+                        <span class="label-text-description">Whatsapp</span>
+                        <input type="text" name="whatsapp" autocomplete="off" required>
+                    </label>
+                    <label>
+                        <span class="label-text-description">Sitio Web</span>
+                        <input type="text" name="webSite" autocomplete="off" required>
+                    </label>
+                    <button class="submit">Registrar</button>
+                </div>
+            </h:form>
+        </div>
+    </body>
+</html>

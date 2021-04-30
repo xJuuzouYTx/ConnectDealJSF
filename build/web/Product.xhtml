@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Productos</title>
+
+    </h:head>
+    <h:body>
+
+      
+        <f:view>
+            <h>nombre</h>
+            <h:outputLabel value="{MgtBean.Nombre}" for="nombrep"/>
+            <h:inputText id="nombrep" value="#{mgtBean.nombre}"  required="true"  autocomplete="off"/>
+            <!--
+            <h:outputLabel value="" for=""/>
+            <h:inputText id="id" value="" title="" required="true" requiredMessage="" autocomplete="off"/>
+
+            <h:outputLabel value="" for=""/>
+            <h:inputText id="id" value="" title="" required="true" requiredMessage="" autocomplete="off"/>
+
+            <h:outputLabel value="" for=""/>
+            <h:inputText id="id" value="" title="" required="true" requiredMessage="" autocomplete="off"/>
+            -->
+            <h:commandButton value="{MgtBean.trasnferir()}"/>
+
+            <h>Trae nombre</h>
+            <h:outputLabel value="Resultado" for="res"/>
+            <h:inputText value="#{resProduct.resultado}"/>
+        </f:view>
+
+
+
+
+    </h:body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+
+    <h:head>
+        <title>Connect Deal</title>
+
+        <!--Estilos-->
+        <h:outputStylesheet name="css/styles.css" />
+        <meta name='viewport' 
+              content='width=device-width, initial-scale=0.8, maximum-scale=0.8, 
+              user-scalable=0' />
+
+    </h:head>
+    <h:body>
+        <div class="container" >
+            <div class="alert" id="alert" style="">
+
+            </div>
+
+            <div class="card">
+                <div class="cardLogin">
+                    <h3>Login</h3>
+                    <p>Inicia sesion para entrar</p>
+                    <button id="loginCard">Iniciar sesion</button>
+                </div>
+                <div class="cardSignUp">
+                    <h3>Registrarme</h3>
+                    <p>Registrate para entrar</p>
+                    <button id="signUpCard">Registrarme</button>
+                </div>
+            </div>
+            <div class="cardForm">
+
+                <h:form   class="loginForm">
+                    <h:link outcome="/Paginas/usurs/Create" value="Show All Usurs Items"/>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h2>Iniciar Sesion</h2>
+                    <div id="loginError"></div> 
+                    <h:inputText value="#{mgtBean.selected.email}" id="Lemail"/>
+                    <h:inputSecret value="#{mgtBean.selected.password}" id="Lpassword"/>
+                    <h:commandButton class="button" value="Iniciar Sesion" action="#{mgtBean.login()}" />
+                    <div class="shared-panel">
+                        <a target="_blank" class="fab fa-google" title="Google"></a>	
+                        <a target="_blank" class="fab fa-twitter" title="Twitter"></a>
+                        <a target="_blank" class="fab fa-facebook" title="Facebook+"></a>	
+                    </div>
+                    <div id="captcha" class="captcha"></div>
+                </h:form>
+                <h:form  class="signUpForm">
+                    <h2>Registrarse</h2>
+                    <div id="registerError"></div> 
+                    <h:inputText  id="Rname"/>
+                    <h:inputText  id="Rlastname"/>
+                    <h:inputText  id="Remail"/>
+                    <h:inputSecret id="Rpassword"/>
+                    <h:commandButton class="button" value="Registrarme"/>
+                    <div class="shared-panel">
+                        <a target="_blank" class="fab fa-google" title="Google"></a>	
+                        <a target="_blank" class="fab fa-twitter" title="Twitter"></a>
+                        <a target="_blank" class="fab fa-facebook" title="Facebook+"></a>	
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        <div id="load" class="load">
+            <div class="loader"></div>
+        </div>
+    </h:body>
+
+    <!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="js/script.js"></script>
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+      
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    --> 
+
+</html>
+

@@ -1,0 +1,273 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 7, 2021, 11:09:04 PM
+    Author     : JuuzouYT
+*/
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Cookie|Raleway:300,700,400);
+*{
+	box-sizing: border-box;
+	font-size: 1em;
+	margin: 0;
+	padding: 0;
+}
+.map {
+  height: 350px;
+  width: 350px;
+  margin: auto;
+  padding: 0;
+}
+
+body{
+	background-size: cover;
+	color: #333;
+	font-size: 18px;
+	font-family: 'Raleway', sans-serif;
+        padding-bottom: 20px;
+}
+.container{
+        perspective: 1000px;
+	border-radius: 0.5em;
+	box-shadow: 0 0 1em 0 rgba(51,51,51,0.25);
+	max-width: 480px;
+        min-width: 450px;
+	margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        margin-bottom: 10px;
+	padding: 40px;
+        transition: transform 1s;
+        transform-style: flat;
+        text-align: center;
+}
+form button.submit{
+	background: rgba(255,255,255,0.25);
+	border: 1px solborderid #333;
+	line-height: 1em;
+	padding: 0.5em 0.5em;
+	-webkit-transition: all 0.25s;
+	transition: all 0.25s;
+}
+form button:hover,
+form button:focus,
+form button:active,
+form button.loading{
+	background: #333;
+	color: #fff;
+	outline: none;
+}
+form button.success{
+	background: #27ae60;
+	border-color: #27ae60; 
+	color: #fff;
+}
+@-webkit-keyframes spin{
+	from{ transform: rotate(0deg); }
+	to{ transform: rotate(360deg); }
+}
+@keyframes spin{
+	from{ transform: rotate(0deg); }
+	to{ transform: rotate(360deg); }
+}
+form button span.loading-spinner{
+	-webkit-animation: spin 0.5s linear infinite;
+	animation: spin 0.5s linear infinite;
+	border: 2px solid #fff;
+	border-top-color: transparent;
+	border-radius: 50%;
+	display: inline-block;
+	height: 1em;
+	width: 1em;
+}
+
+form label{
+	
+	display: block;
+	font-size: 1.25em;
+	margin-bottom: 0.5em;
+	-webkit-transition: all 0.25s;
+	transition: all 0.25s;
+}
+form label.col-one-half{
+	float: left;
+	width: 50%;
+}
+form label.col-one-half:nth-of-type(even){
+	border-left: 1px solid #333;
+	padding-left: 0.25em;
+}
+form label input{
+	background: rgba(0,0,0,.1);
+	border-radius: 5px;
+        outline: none;
+        border: none;
+	line-height: 1em;
+	font-weight: 300;
+	padding: 0.125em 0.25em;
+	width: 100%;
+        padding: 10px 20px;
+        font-size: 15px;
+}
+form label input:focus{
+	outline: none;
+}
+form label input:-webkit-autofill{
+	background-color: transparent !important;
+}
+form label span.label-text{
+	display: block;
+	font-size: 0.5em;
+	font-weight: bold;
+	padding-left: 0.5em;
+	text-transform: uppercase;
+	-webkit-transition: all 0.25s;
+	transition: all 0.25s;
+}
+.comprobe{
+    padding: 20px;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+#comprobeLocation{
+    font-family: 'Glyphicons Halflings';
+    margin: auto;
+}
+form label span.label-text-description{
+	display: block;
+	font-size: 0.5em;
+	font-weight: bold;
+	padding-left: 0.5em;
+	text-transform: uppercase;
+	-webkit-transition: all 0.25s;
+	transition: all 0.25s;
+}
+form textArea{
+	background: rgba(0,0,0,.1);
+        color: #000;
+        resize: none;
+        border: 0px solid #000;
+        width: 100%;
+        outline: none;
+        font-size: 15px;
+        padding: 10px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        font-size: 18pts;
+}
+form label.checkbox{
+	border-bottom: 0;
+	text-align: center;
+}
+form label.checkbox input{
+	display: none;
+}
+form label.checkbox span{
+	font-size: 0.5em;
+}
+form label.checkbox span:before{
+	content: '\e157';
+	display: inline-block;
+	font-family: 'Glyphicons Halflings';
+	font-size: 1.125em;
+	padding-right: 0.25em;
+	position: relative;
+		top: 1px;
+}
+form label.checkbox input:checked + span:before{content: '\e067';}
+form label.invalid{border-color: #c0392b !important;}
+form label.invalid span.label-text{color: #c0392b;}
+form label.password{position: relative;}
+form label.password button.toggle-visibility{
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 0.75em;
+	line-height: 1em;
+	position: absolute;
+		top: 50%;
+		right: 0.5em;
+	text-align: center;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	-webkit-transition: all 0.25s;
+	transition: all 0.25s;
+}
+form label.password button.toggle-visibility:hover,
+form label.password button.toggle-visibility:focus,
+form label.password button.toggle-visibility:active{
+	color: #000;
+	outline: none;
+}
+form label.password button.toggle-visibility span{vertical-align: middle;}
+
+h1{
+	font-size: 3em;
+	margin: 0 0 0.5em 0;
+	text-align: center;
+	font-family: 'Cookie', cursive;
+}
+h1 img{
+	height: auto;
+	margin: 0 auto;
+	max-width: 240px;
+	width: 100%;
+}
+html{
+	font-size: 18px;
+	height: 100%;
+}
+
+.text-center{
+    text-align: center;
+    margin: 20px;
+}
+.text-center button{
+    font-family: 'Glyphicons Halflings';
+}
+.image-upload>input {
+  display: none;
+  cursor: pointer;
+}
+.image-upload{
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+  
+}
+.image-upload:hover{
+    cursor: pointer;    
+}
+.image-upload img{
+    margin: auto; 
+    padding: 10px 10px 10px 20px;
+    cursor: pointer;
+}
+.image-upload img:hover{
+    background: rgba(0,0,0,.2);
+}
+
+
+.flip-card-front {
+  background: #fff;
+  width: 100%;
+}
+
+.flip-card-back {
+     width: 100%;
+     height: 100%;
+    display: none;
+    background: #fff;
+    transform: rotateY(180deg);
+}
+

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDealsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDealsLabel_id}"/>
+                    <h:outputText value="#{dealsController.selected.id}" title="#{bundle.ViewDealsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_name}"/>
+                    <h:outputText value="#{dealsController.selected.name}" title="#{bundle.ViewDealsTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_description}"/>
+                    <h:outputText value="#{dealsController.selected.description}" title="#{bundle.ViewDealsTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_lat}"/>
+                    <h:outputText value="#{dealsController.selected.lat}" title="#{bundle.ViewDealsTitle_lat}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_lng}"/>
+                    <h:outputText value="#{dealsController.selected.lng}" title="#{bundle.ViewDealsTitle_lng}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_qualification}"/>
+                    <h:outputText value="#{dealsController.selected.qualification}" title="#{bundle.ViewDealsTitle_qualification}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_phone}"/>
+                    <h:outputText value="#{dealsController.selected.phone}" title="#{bundle.ViewDealsTitle_phone}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_facebook}"/>
+                    <h:outputText value="#{dealsController.selected.facebook}" title="#{bundle.ViewDealsTitle_facebook}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_instagram}"/>
+                    <h:outputText value="#{dealsController.selected.instagram}" title="#{bundle.ViewDealsTitle_instagram}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_twitter}"/>
+                    <h:outputText value="#{dealsController.selected.twitter}" title="#{bundle.ViewDealsTitle_twitter}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_website}"/>
+                    <h:outputText value="#{dealsController.selected.website}" title="#{bundle.ViewDealsTitle_website}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_whatsapp}"/>
+                    <h:outputText value="#{dealsController.selected.whatsapp}" title="#{bundle.ViewDealsTitle_whatsapp}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_image}"/>
+                    <h:outputText value="#{dealsController.selected.image}" title="#{bundle.ViewDealsTitle_image}"/>
+                    <h:outputText value="#{bundle.ViewDealsLabel_userId}"/>
+                    <h:outputText value="#{dealsController.selected.userId}" title="#{bundle.ViewDealsTitle_userId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{dealsController.destroyAndView}" value="#{bundle.ViewDealsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDealsEditLink}"/>
+                <br />
+                <h:commandLink action="#{dealsController.prepareCreate}" value="#{bundle.ViewDealsCreateLink}" />
+                <br />
+                <h:commandLink action="#{dealsController.prepareList}" value="#{bundle.ViewDealsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDealsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

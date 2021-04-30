@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUsursTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUsursLabel_email}"/>
+                    <h:outputText value="#{usursController.selected.email}" title="#{bundle.ViewUsursTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewUsursLabel_password}"/>
+                    <h:outputText value="#{usursController.selected.password}" title="#{bundle.ViewUsursTitle_password}"/>
+                    <h:outputText value="#{bundle.ViewUsursLabel_id}"/>
+                    <h:outputText value="#{usursController.selected.id}" title="#{bundle.ViewUsursTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewUsursLabel_salt}"/>
+                    <h:outputText value="#{usursController.selected.salt}" title="#{bundle.ViewUsursTitle_salt}"/>
+                    <h:outputText value="#{bundle.ViewUsursLabel_name}"/>
+                    <h:outputText value="#{usursController.selected.name}" title="#{bundle.ViewUsursTitle_name}"/>
+                    <h:outputText value="#{bundle.ViewUsursLabel_lastname}"/>
+                    <h:outputText value="#{usursController.selected.lastname}" title="#{bundle.ViewUsursTitle_lastname}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usursController.destroyAndView}" value="#{bundle.ViewUsursDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUsursEditLink}"/>
+                <br />
+                <h:commandLink action="#{usursController.prepareCreate}" value="#{bundle.ViewUsursCreateLink}" />
+                <br />
+                <h:commandLink action="#{usursController.prepareList}" value="#{bundle.ViewUsursShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUsursIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

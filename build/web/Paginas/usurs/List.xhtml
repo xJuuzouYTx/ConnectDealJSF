@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListUsursTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListUsursEmpty}" rendered="#{usursController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{usursController.items.rowCount > 0}">
+                    <h:outputText value="#{usursController.pagination.pageFirstItem + 1}..#{usursController.pagination.pageLastItem + 1}/#{usursController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{usursController.previous}" value="#{bundle.Previous} #{usursController.pagination.pageSize}" rendered="#{usursController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{usursController.next}" value="#{bundle.Next} #{usursController.pagination.pageSize}" rendered="#{usursController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{usursController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsursTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsursTitle_password}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.password}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsursTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsursTitle_salt}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.salt}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsursTitle_name}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.name}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsursTitle_lastname}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lastname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{usursController.prepareView}" value="#{bundle.ListUsursViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{usursController.prepareEdit}" value="#{bundle.ListUsursEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{usursController.destroy}" value="#{bundle.ListUsursDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{usursController.prepareCreate}" value="#{bundle.ListUsursCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListUsursIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

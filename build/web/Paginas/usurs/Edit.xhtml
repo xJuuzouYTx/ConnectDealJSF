@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUsursTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUsursLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{usursController.selected.email}" title="#{bundle.EditUsursTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditUsursLabel_password}" for="password" />
+                    <h:inputText id="password" value="#{usursController.selected.password}" title="#{bundle.EditUsursTitle_password}" />
+                    <h:outputLabel value="#{bundle.EditUsursLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{usursController.selected.id}" title="#{bundle.EditUsursTitle_id}" required="true" requiredMessage="#{bundle.EditUsursRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditUsursLabel_salt}" for="salt" />
+                    <h:inputText id="salt" value="#{usursController.selected.salt}" title="#{bundle.EditUsursTitle_salt}" />
+                    <h:outputLabel value="#{bundle.EditUsursLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{usursController.selected.name}" title="#{bundle.EditUsursTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditUsursLabel_lastname}" for="lastname" />
+                    <h:inputText id="lastname" value="#{usursController.selected.lastname}" title="#{bundle.EditUsursTitle_lastname}" />
+                </h:panelGrid>
+                <h:commandLink action="#{usursController.update}" value="#{bundle.EditUsursSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditUsursViewLink}"/>
+                <br />
+                <h:commandLink action="#{usursController.prepareList}" value="#{bundle.EditUsursShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditUsursIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Perfil</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:outputLabel>Actualización de datos</h:outputLabel>
+
+            <div class="container">
+                
+                <div>
+                    <h:outputLabel>Ingrese su correo</h:outputLabel>
+                    <h:inputText  value ="#{mgtBean.selected.email}"></h:inputText>
+                </div>
+                <div>
+                    <h:outputLabel>Primer nombre</h:outputLabel>
+                <h:inputText  value ="#{mgtBean.selected.name}"></h:inputText>
+                </div>
+                <div>
+                    <h:outputLabel>Apellido</h:outputLabel>
+                    <h:inputText value ="#{mgtBean.selected.lastname}"></h:inputText>
+                </div>
+
+                <div>
+                    <h:outputLabel>Actualiza tu cedula</h:outputLabel>
+                    <h:inputText  value="#{mgtBean.selected.cedula}"></h:inputText>  
+                </div>
+                <div>
+                    <h:commandButton action="#{mgtBean.modificar()}" value="Actualizar Datos"></h:commandButton>
+                    <h:commandLink action="#{auditoriaPerezController.create()}"
+                </div>
+                
+
+
+            </div>
+        </h:form>
+
+    </h:body>
+</html>

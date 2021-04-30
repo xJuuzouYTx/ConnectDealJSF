@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDealsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDealsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{dealsController.selected.id}" title="#{bundle.EditDealsTitle_id}" required="true" requiredMessage="#{bundle.EditDealsRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditDealsLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{dealsController.selected.name}" title="#{bundle.EditDealsTitle_name}" />
+                    <h:outputLabel value="#{bundle.EditDealsLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{dealsController.selected.description}" title="#{bundle.EditDealsTitle_description}" />
+                    <h:outputLabel value="#{bundle.EditDealsLabel_lat}" for="lat" />
+                    <h:inputText id="lat" value="#{dealsController.selected.lat}" title="#{bundle.EditDealsTitle_lat}" />
+                    <h:outputLabel value="#{bundle.EditDealsLabel_lng}" for="lng" />
+                    <h:inputText id="lng" value="#{dealsController.selected.lng}" title="#{bundle.EditDealsTitle_lng}" />
+                    <h:outputLabel value="#{bundle.EditDealsLabel_qualification}" for="qualification" />
+                    <h:inputText id="qualification" value="#{dealsController.selected.qualification}" title="#{bundle.EditDealsTitle_qualification}" />
+                    <h:outputLabel value="#{bundle.EditDealsLabel_phone}" for="phone" />
+                    <h:inputText id="phone" value="#{dealsController.selected.phone}" title="#{bundle.EditDealsTitle_phone}" />
+                    <h:outputLabel value="#{bundle.EditDealsLabel_facebook}" for="facebook" />
+                    <h:inputText id="facebook" value="#{dealsController.selected.facebook}" title="#{bundle.EditDealsTitle_facebook}" />
+                    <h:outputLabel value="#{bundle.EditDealsLabel_instagram}" for="instagram" />
+                    <h:inputText id="instagram" value="#{dealsController.selected.instagram}" title="#{bundle.EditDealsTitle_instagram}" />
+                    <h:outputLabel value="#{bundle.EditDealsLabel_twitter}" for="twitter" />
+                    <h:inputText id="twitter" value="#{dealsController.selected.twitter}" title="#{bundle.EditDealsTitle_twitter}" />
+                    <h:outputLabel value="#{bundle.EditDealsLabel_website}" for="website" />
+                    <h:inputText id="website" value="#{dealsController.selected.website}" title="#{bundle.EditDealsTitle_website}" />
+                    <h:outputLabel value="#{bundle.EditDealsLabel_whatsapp}" for="whatsapp" />
+                    <h:inputText id="whatsapp" value="#{dealsController.selected.whatsapp}" title="#{bundle.EditDealsTitle_whatsapp}" />
+                    <h:outputLabel value="#{bundle.EditDealsLabel_image}" for="image" />
+                    <h:inputTextarea rows="4" cols="30" id="image" value="#{dealsController.selected.image}" title="#{bundle.EditDealsTitle_image}" />
+                    <h:outputLabel value="#{bundle.EditDealsLabel_userId}" for="userId" />
+                    <h:selectOneMenu id="userId" value="#{dealsController.selected.userId}" title="#{bundle.EditDealsTitle_userId}" required="true" requiredMessage="#{bundle.EditDealsRequiredMessage_userId}">
+                        <f:selectItems value="#{usursController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{dealsController.update}" value="#{bundle.EditDealsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDealsViewLink}"/>
+                <br />
+                <h:commandLink action="#{dealsController.prepareList}" value="#{bundle.EditDealsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDealsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
