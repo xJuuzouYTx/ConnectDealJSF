@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      >
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>ConnectDeal</title>
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet"/>
+        <!-- CSS -->
+        <h:outputStylesheet name="css/productDetails.css" />
+        <meta name="robots" content="noindex,follow" />
+    </h:head>
+
+    <body>
+        <ui:include src="navbar.xhtml"/>
+        <main class="container">
+
+            <!-- Left Column / Headphones Image -->
+            <div class="left-column">
+                <img data-image="red"  class="active" src="#{productsController.productSelected.image}" alt=""/>
+                <!--<img data-image="blue" src="images/blue.png" alt=""/>
+                <img data-image="red" src="images/red.png" alt=""/>-->
+            </div>
+
+
+            <!-- Right Column -->
+            <div class="right-column">
+
+                <!-- Product Description -->
+                <div class="product-description">
+                    <span>Headphones</span>
+                    <h2>#{productsController.productSelected.name}</h2>
+                    <p>#{productsController.productSelected.description}
+                    </p>
+                </div>
+
+                <!-- Product Configuration -->
+                <div class="product-configuration">
+
+                    <!-- Product Color -->
+                    <div class="product-color">
+                        <span>Color</span>
+
+                        <div class="color-choose">
+                            <div>
+                                <input data-image="red" type="radio" id="red" name="color" value="red" checked="true"/>
+                                <label for="red"><span></span></label>
+                            </div>
+                            <div>
+                                <input data-image="blue" type="radio" id="blue" name="color" value="blue"/>
+                                <label for="blue"><span></span></label>
+                            </div>
+                            <div>
+                                <input data-image="black" type="radio" id="black" name="color" value="black"/>
+                                <label for="black"><span></span></label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Cable Configuration -->
+                    <div class="cable-config">
+                        <span>Contacto</span>
+
+                        <div class="cable-choose">
+                            <button>Facebook</button>
+                            <button>Whatsapp</button>
+                            <button>Pagina web</button>
+                        </div>
+
+                        <a href="#">¿Como llegar.?</a>
+                    </div>
+                </div>
+
+                <!-- Product Pricing -->
+                <div class="product-price">
+                    <span>$#{productsController.productSelected.price}</span>
+                    <a href="#" class="cart-btn">Añadir a Favoritos</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+        <script src="script.js" charset="utf-8"></script>
+    </body>
+    <script>
+        $(document).ready(function () {
+
+            $('.color-choose input').on('click', function () {
+                var headphonesColor = $(this).attr('data-image');
+
+                $('.active').removeClass('active');
+                $('.left-column img[data-image = ' + headphonesColor + ']').addClass('active');
+                $(this).addClass('active');
+            });
+
+        });
+
+    </script>
+</html>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      >
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet name="css/profile.css"/>
+    </h:head>
+    <body>
+        <div class="userInfo">
+                <div class="inf">
+                    <div class="image">
+                        <img src="https://pbs.twimg.com/media/EawxvegXYAE-lsK.jpg" alt="Avatar" class="avatar-preview"/>
+                    </div>
+                    <div class="user">
+                        <h3>#{productsController.name}</h3>
+                    </div>
+                    <div class="count">
+                        <input value="Editar perfil" type="submit"/>
+                    </div>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:form>
+                       <div>
+                           <h:inputText a:placeholder="Email" value="#{authController.email}" class="input"/>
+                           <h:inputText a:placeholder="Contraseña" value="#{authController.password}"  class="input"/>
+                           <h:inputText a:placeholder="Nueva contraseña" value="#{authController.newPassword}"  class="input"/>
+                           <h:commandButton value="Cambiar contraseña" action="#{authController.changePassword()}"  class="input"/>
+                        </div>
+                    </h:form>
+                </div>
+        </div>
+    </body>
+      <style>
+                body{
+                    font-family: 'roboto';
+                }
+                form div{
+                    width: 60%;
+                    margin: auto;
+                    padding: 50px;
+                    border: 10px solid #f4f4f4;
+                    background: #f4f4f4;
+                    border-radius: 10px;
+                }
+                form input[type=text], form input[type=password]{
+                    margin: auto;
+                    padding: 10px;
+                    border-radius: 7px;
+                    margin-top: 20px;
+                    border: none;
+                    background: #e1e1e1;
+                    font-size: 16px;
+                    outline: none;
+                } 
+                form input[type=submit]{
+                    margin: auto;
+                    padding: 10px;
+                    border-radius: 7px;
+                    margin-top: 20px;
+                }
+                .Dealcard-text{
+                    width: 100%;
+                    display: block;
+                }
+              
+            .Dealcard1 {
+                margin-top: 20px;
+                cursor: pointer;
+                display: inline-block;
+                border-radius: 18px;
+                box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+                font-family: roboto;
+                text-align: center;
+                width: 60%;
+                clear: both;
+                margin: 20px;
+                transition: 0.5s ease;
+                background: #f4f4f4;
+                background-size: 100px 100px;
+            }
+            </style>
+</html>

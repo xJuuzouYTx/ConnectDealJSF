@@ -1,0 +1,67 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      >      
+    <h:head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <!--Estilos-->
+        <h:outputStylesheet name="css/home.css"/>
+        <h:outputScript name="js/home.js"/>
+        <script src="https://apis.google.com/js/platform.js" ></script>
+        <meta name="google-signin-scope" content="profile email"/>
+        <meta name="google-signin-client_id" content="80889282435-r4n5hk4rmpru86n43k9i7cctrmavdgdl.apps.googleusercontent.com"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous"></link>
+    </h:head>
+    
+        <nav>
+            <ul class="z">
+                <li class="title"><a href="#">ConnectDeal</a></li>
+                <h:form id="mydform" class="x">     
+                    <h:commandButton value="Productos" id="btnProducts" action="#{productsController.setCurrentPage('showProducts.xhtml')}" style="display: none;" >
+                        <f:ajax />
+                    </h:commandButton>
+                    <button  type="submit" name="mydform:btnProducts" style="background: transparent; outline: none; border-style: none;">
+                        <i class="icon-search"></i><li class="x" id="products"><a><i class="fas fa-shopping-bag" ></i></a></li>
+                    </button>
+                </h:form>
+                <h:form id="myform1" class="x">
+                    <h:commandButton value="Negocios" id="btnDeals"  action="#{productsController.setCurrentPage('showDeals.xhtml')}" style="display: none;">
+                        <f:ajax />
+                    </h:commandButton>
+                    <button  type="submit" name="myform1:btnDeals" style="background: transparent; outline: none; border-style: none;">
+                        <li class="x" id="mydeals" ><a><i class="fas fa-store" ></i></a></li>
+                    </button>
+                </h:form>
+                <li class="x" id="notify"><a><i class="fas fa-bell"></i></a></li>
+                <!-- <li><input type="button" id="logout" onclick="logout()" value="Cerrar Sesion"></li>-->
+                <li class="x" id="user" onclick="showMenu()">
+                    <p>
+                        #{productsController.name}
+                    </p>
+                    <img src="https://pbs.twimg.com/media/EawxvegXYAE-lsK.jpg" alt="Avatar" class="avatar"/>
+                    <div class="menu" id="menu">
+                        <ul class="menuul">
+                            <li class="menuli" id="profile"><a>
+                                    <h:form>
+                                        <h:commandButton value="Perfil" id="btnProfile"  action="#{productsController.setCurrentPage('showProfile.xhtml')}" />
+                                        <button  type="submit" name="myform1:btnProfile" style="background: transparent; outline: none; border-style: none;">
+                                        </button>
+                                        <!--<li class="menuli" id="signout"><i class="fas fa-door-closed" ></i>Cerrar Sesion</li>-->
+                                    </h:form>
+                                    <!-- <i class="fas fa-user"></i>-->
+                                </a></li>
+                            <h:form>
+                                <h:commandButton class="menuli" value="Cerrar Sesion" onclick="myFunction()" id="button" action="#{authController.logout()}"/>
+                            </h:form>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    
+</html>

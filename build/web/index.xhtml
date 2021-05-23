@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      >
+    <h:head>
+        <title>ConnectDeal</title>
+         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+         <meta name='viewport' 
+     content='width=device-width, initial-scale=0.8, maximum-scale=0.8, 
+     user-scalable=0'/>
+         <script src="https://apis.google.com/js/platform.js" ></script>
+        <meta name="google-signin-client_id" content="80889282435-r4n5hk4rmpru86n43k9i7cctrmavdgdl.apps.googleusercontent.com"/>
+        <h:outputStylesheet name="css/styles.css"/>
+    </h:head>
+    <h:body>
+          <div class="container" >
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="alert" id="alert" style="">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            </div>
+        
+            <div class="card">
+                <div class="cardLogin">
+                    <h3>Login</h3>
+                    <p>Inicia sesion para entrar</p>
+                    <button id="loginCard" onclick="showLogin()">Iniciar sesion</button>
+                </div>
+                <div class="cardSignUp">
+                    <h3>Registrarme</h3>
+                    <p>Registrate para entrar</p>
+                    <button id="signUpCard" onclick="showRegister()">Registrarme</button>
+                </div>
+            </div>
+            <div class="cardForm">
+                <h:form class="loginForm" id="loginForm">
+                    <h2>Iniciar Sesion</h2>
+                    <div id="loginError"></div> 
+                    <h:inputText id="Lemail" value="#{authController.selected.email}"  a:placeholder="Email"/>
+                    <h:inputSecret value="#{authController.selected.password}"  id="Lpassword"  a:placeholder="Contraseña"/>
+                    <h:commandButton value="Iniciar Sesion" id="button" action="#{authController.login()}"/>
+                    <div class="shared-panel">
+                        <a target="_blank" class="fab fa-google" title="Google"></a>	
+                        <a target="_blank" class="fab fa-twitter" title="Twitter"></a>
+                        <a target="_blank" class="fab fa-facebook" title="Facebook+"></a>	
+                    </div>
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <div id="captcha" class="captcha"></div>
+                </h:form>
+                <h:form id="hiddenForm" style="display: none;">
+                    <input id="Gname" name="Gname"/>
+                    <input id="Gemail" name="Gemail"/>
+                    <input id="Gphoto" name="Gphoto"/>
+                    <h:commandButton id="googleOAuth" value="gg" class="googleOAuth" 
+                                     action="#{authController.googleOAuth()}" >
+                    <f:ajax />
+                    </h:commandButton>
+                </h:form>
+                <h:form class="signUpForm">
+                    <h2>Registrarse</h2>
+                    <div id="registerError"></div> 
+                    <h:inputText value="#{authController.selected.name}" id="Rname"  a:placeholder="Nombre"/>
+                    <h:inputText value="#{authController.selected.lastname}" id="RLastname" a:placeholder="Apellido"/>
+                    <h:inputText value="#{authController.selected.email}"  id="Remail" a:placeholder="Email" />
+                    <h:inputSecret value="#{authController.selected.password}"  id="Rpassword" a:placeholder="Contraseña"/>
+                    <h:commandButton value="Registrar" id="button" action="#{authController.register()}" />
+                    <div class="shared-panel">
+                        <a target="_blank" class="fab fa-google" title="Google"></a>	
+                        <a target="_blank" class="fab fa-twitter" title="Twitter"></a>
+                        <a target="_blank" class="fab fa-facebook" title="Facebook+"></a>	
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        <div id="load" class="load">
+            <div class="loader"></div>
+        </div>
+         <!--FontAwesome-->
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous"></link>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+        <!--Peticiones-->
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript">
+           var card = document.querySelector(".card");
+           var cardLogin = document.querySelector(".cardLogin");
+           var cardSignUp = document.querySelector(".cardSignUp");
+           var loginForm = document.querySelector(".loginForm");
+           var signUpForm = document.querySelector(".signUpForm");
+           var container = document.querySelector(".container");
+
+
+           function showRegister(){
+              cardSignUp.style.display = "none";
+              signUpForm.style.display = "block";
+              loginForm.style.display = "none";
+              cardLogin.style.display = "block";
+
+           }
+           function showLogin(){
+              loginForm.style.display = "block";
+              cardLogin.style.display = "none";
+              signUpForm.style.display = "none";
+              cardSignUp.style.display = "block";
+           }
+         </script>
+        
+        <script>
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId());
+                document.getElementById("Gname").value = profile.getName();
+                document.getElementById("Gemail").value = profile.getEmail();
+                document.getElementById("Gphoto").value = profile.getImageUrl();
+                
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail());
+                console.log('id_token: ' + googleUser.getAuthResponse().id_token);
+                
+                
+                //var x =document.getElementsByClassName("googleOAuth");
+                //x[0].click();
+            }
+        </script>
+    </h:body>
+</html>
+
