@@ -6,14 +6,10 @@
 package EJB;
 
 import DTO.AuditoriaHugogonzalez;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
 import Business.AuditoriaHugogonzalezService;
 

@@ -33,6 +33,7 @@ public class DealsController implements Serializable {
     private boolean nameExsist = false;
     private Deals current;
     private String script;
+    private boolean isThereDeals;
 
     @ManagedProperty("#{dealsImplementation}")
     private DealsImplementation dealsImp;
@@ -50,8 +51,18 @@ public class DealsController implements Serializable {
 
     }
 
+    public boolean isIsThereDeals() {
+        return isThereDeals;
+    }
+
     public List<Deals> getMyDealsList(){
-        return dealsImp.getMyDealsList();
+        List<Deals> deals =  dealsImp.getMyDealsList();
+        if (deals.size()>0){
+            isThereDeals = true;
+        }else{
+            isThereDeals = false;
+        }
+        return deals;
     }
     
     public String getMessageError() {
@@ -148,8 +159,6 @@ public class DealsController implements Serializable {
             this.messageError = "Por favor asegurese de dar una ubicacion";
         } else if (current.getLng() == null) {
             this.messageError = "Por favor asegurese de dar una ubicacion";
-        } else if (current.getPhone() == null) {
-            this.messageError = "Por favor asegurese de dar un numero de contacto";
         } else {
             System.out.println("Entra");
             if (dealsImp.registerDeal(current)){
