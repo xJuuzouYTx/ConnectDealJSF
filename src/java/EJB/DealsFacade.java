@@ -5,7 +5,7 @@
  */
 package EJB;
 
-import DTO.AuditoriaHugogonzalez;
+import DTO.Auditoriahugogonzalez;
 import DTO.Deals;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -47,12 +47,13 @@ public class DealsFacade extends AbstractFacade<Deals> implements DealsService {
         }
     }
 
-    public AuditoriaHugogonzalez lastTime(String usuario) {
+    @Override
+    public Auditoriahugogonzalez lastTime(String usuario) {
         Query query = em.createQuery("SELECT a FROM AuditoriaHugogonzalez a WHERE a.usuario = :usuario");
         query.setParameter("usuario", usuario);
-        AuditoriaHugogonzalez au = new AuditoriaHugogonzalez();
+        Auditoriahugogonzalez au = new Auditoriahugogonzalez();
         try {
-            au = (AuditoriaHugogonzalez) query.getSingleResult();
+            au = (Auditoriahugogonzalez) query.getSingleResult();
             return au;
         } catch (Exception e) {
             return null;

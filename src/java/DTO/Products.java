@@ -7,7 +7,6 @@ package DTO;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +15,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,6 +23,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "products")
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @NamedQueries({
     @NamedQuery(name = "Products.findAll", query = "SELECT p FROM Products p")
     , @NamedQuery(name = "Products.findById", query = "SELECT p FROM Products p WHERE p.id = :id")
@@ -42,7 +43,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Products.findByDescription", query = "SELECT p FROM Products p WHERE p.description = :description")
     , @NamedQuery(name = "Products.findByLikes", query = "SELECT p FROM Products p WHERE p.likes = :likes")
     , @NamedQuery(name = "Products.findByPrice", query = "SELECT p FROM Products p WHERE p.price = :price")
-    , @NamedQuery(name = "Products.findByDealId", query = "SELECT p FROM Products p WHERE p.dealId = :dealId")
     , @NamedQuery(name = "Products.findByActive", query = "SELECT p FROM Products p WHERE p.active = :active")
     , @NamedQuery(name = "Products.findByCreatedAt", query = "SELECT p FROM Products p WHERE p.createdAt = :createdAt")})
 public class Products implements Serializable {
@@ -52,7 +52,7 @@ public class Products implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    public Integer id;
+    private Integer id;
     @Size(max = 100)
     @Column(name = "name")
     private String name;
@@ -73,13 +73,10 @@ public class Products implements Serializable {
     private int price;
     @Column(name = "active")
     private Boolean active;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
-    @ManyToMany(mappedBy = "productsList")
-    private List<Deals> dealsList;
+    @XmlTransient
     @JoinColumn(name = "dealId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Deals dealId;
@@ -91,11 +88,10 @@ public class Products implements Serializable {
         this.id = id;
     }
 
-    public Products(Integer id, int likes, int price, Date createdAt) {
+    public Products(Integer id, int likes, int price) {
         this.id = id;
         this.likes = likes;
         this.price = price;
-        this.createdAt = createdAt;
     }
 
     public Integer getId() {
@@ -160,15 +156,6 @@ public class Products implements Serializable {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-    }
-
-    @XmlTransient
-    public List<Deals> getDealsList() {
-        return dealsList;
-    }
-
-    public void setDealsList(List<Deals> dealsList) {
-        this.dealsList = dealsList;
     }
 
     public Deals getDealId() {

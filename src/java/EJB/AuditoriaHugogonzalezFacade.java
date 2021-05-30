@@ -5,7 +5,7 @@
  */
 package EJB;
 
-import DTO.AuditoriaHugogonzalez;
+import DTO.Auditoriahugogonzalez;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.ParameterMode;
@@ -18,7 +18,7 @@ import Business.AuditoriaHugogonzalezService;
  * @author JuuzouYT
  */
 @Stateless
-public class AuditoriaHugogonzalezFacade extends AbstractFacade<AuditoriaHugogonzalez> implements AuditoriaHugogonzalezService {
+public class AuditoriaHugogonzalezFacade extends AbstractFacade<Auditoriahugogonzalez> implements AuditoriaHugogonzalezService {
 
     @PersistenceContext(unitName = "testPU")
     private EntityManager em;
@@ -29,7 +29,7 @@ public class AuditoriaHugogonzalezFacade extends AbstractFacade<AuditoriaHugogon
     }
 
     public AuditoriaHugogonzalezFacade() {
-        super(AuditoriaHugogonzalez.class);
+        super(Auditoriahugogonzalez.class);
     }
     
     @Override

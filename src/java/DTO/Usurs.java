@@ -6,7 +6,7 @@
 package DTO;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,15 +14,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
-import static javax.persistence.ParameterMode.IN;
-import static javax.persistence.ParameterMode.INOUT;
-import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -36,51 +32,51 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usurs.findAll", query = "SELECT u FROM Usurs u")
-    , @NamedQuery(name = "Usurs.findByEmail", query = "SELECT u FROM Usurs u WHERE u.email = :email")
-    , @NamedQuery(name = "Usurs.findByPassword", query = "SELECT u FROM Usurs u WHERE u.password = :password")
     , @NamedQuery(name = "Usurs.findById", query = "SELECT u FROM Usurs u WHERE u.id = :id")
-    , @NamedQuery(name = "Usurs.findBySalt", query = "SELECT u FROM Usurs u WHERE u.salt = :salt")
     , @NamedQuery(name = "Usurs.findByName", query = "SELECT u FROM Usurs u WHERE u.name = :name")
-    , @NamedQuery(name = "Usurs.findDeals", query = "SELECT u.dealsList FROM Usurs u WHERE u.id = :id")
-    , @NamedQuery(name = "Usurs.findByLastname", query = "SELECT u FROM Usurs u WHERE u.lastname = :lastname")})
-
-@NamedStoredProcedureQuery(
-    name="login",
-    procedureName = "login",
-    parameters={
-        @StoredProcedureParameter(name="email", mode=IN, type=String.class),
-        @StoredProcedureParameter(name="password", mode=IN, type=String.class),
-        @StoredProcedureParameter(name="isVerified", mode=INOUT, type=boolean.class),
-    } 
-)
+    , @NamedQuery(name = "Usurs.findByLastname", query = "SELECT u FROM Usurs u WHERE u.lastname = :lastname")
+    , @NamedQuery(name = "Usurs.findByEmail", query = "SELECT u FROM Usurs u WHERE u.email = :email")
+    , @NamedQuery(name = "Usurs.findByPhone", query = "SELECT u FROM Usurs u WHERE u.phone = :phone")
+    , @NamedQuery(name = "Usurs.findByPassword", query = "SELECT u FROM Usurs u WHERE u.password = :password")
+    , @NamedQuery(name = "Usurs.findBySalt", query = "SELECT u FROM Usurs u WHERE u.salt = :salt")
+    , @NamedQuery(name = "Usurs.findByDocument", query = "SELECT u FROM Usurs u WHERE u.document = :document")})
 public class Usurs implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 60)
-    @Column(name = "email")
-    private String email;
-    @Size(max = 255)
-    @Column(name = "password")
-    private String password;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
     @Size(max = 100)
-    @Column(name = "salt")
-    private String salt;
-    @Size(max = 60)
     @Column(name = "name")
     private String name;
-    @Size(max = 60)
+    @Size(max = 100)
     @Column(name = "lastname")
     private String lastname;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Size(max = 100)
+    @Column(name = "email")
+    private String email;
+    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
+    @Size(max = 10)
+    @Column(name = "phone")
+    private String phone;
+    @Size(max = 255)
+    @Column(name = "password")
+    private String password;
+    @Size(max = 255)
+    @Column(name = "salt")
+    private String salt;
+    @Size(max = 12)
+    @Column(name = "document")
+    private String document;
+    @Lob
+    @Size(max = 65535)
+    @Column(name = "image")
+    private String image;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
-    private List<Deals> dealsList;
+    private Collection<Deals> dealsCollection;
 
     public Usurs() {
     }
@@ -89,41 +85,12 @@ public class Usurs implements Serializable {
         this.id = id;
     }
 
-    public Usurs(Integer id, String email) {
-        this.id = id;
-        this.email = email;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
     }
 
     public String getName() {
@@ -142,13 +109,61 @@ public class Usurs implements Serializable {
         this.lastname = lastname;
     }
 
-    @XmlTransient
-    public List<Deals> getDealsList() {
-        return dealsList;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDealsList(List<Deals> dealsList) {
-        this.dealsList = dealsList;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getDocument() {
+        return document;
+    }
+
+    public void setDocument(String document) {
+        this.document = document;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    @XmlTransient
+    public Collection<Deals> getDealsCollection() {
+        return dealsCollection;
+    }
+
+    public void setDealsCollection(Collection<Deals> dealsCollection) {
+        this.dealsCollection = dealsCollection;
     }
 
     @Override

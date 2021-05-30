@@ -6,7 +6,7 @@
 package DTO;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,9 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -64,10 +62,10 @@ public class Deals implements Serializable {
     @Size(max = 255)
     @Column(name = "description")
     private String description;
-    @Size(max = 30)
+    @Size(max = 15)
     @Column(name = "lat")
     private String lat;
-    @Size(max = 30)
+    @Size(max = 15)
     @Column(name = "lng")
     private String lng;
     @Basic(optional = false)
@@ -79,7 +77,7 @@ public class Deals implements Serializable {
     @Column(name = "n_qualifications")
     private int nQualifications;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
-    @Size(max = 20)
+    @Size(max = 10)
     @Column(name = "phone")
     private String phone;
     @Size(max = 100)
@@ -94,23 +92,18 @@ public class Deals implements Serializable {
     @Size(max = 100)
     @Column(name = "webSite")
     private String webSite;
-    @Size(max = 20)
+    @Size(max = 10)
     @Column(name = "whatsapp")
     private String whatsapp;
     @Lob
     @Size(max = 65535)
     @Column(name = "image")
     private String image;
-    @JoinTable(name = "deals_products", joinColumns = {
-        @JoinColumn(name = "Deals_id", referencedColumnName = "id")}, inverseJoinColumns = {
-        @JoinColumn(name = "productsList_id", referencedColumnName = "id")})
-    @ManyToMany
-    private List<Products> productsList;
     @JoinColumn(name = "userId", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usurs userId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "dealId")
-    private List<Products> productsList1;
+    private Collection<Products> productsCollection;
 
     public Deals() {
     }
@@ -237,15 +230,6 @@ public class Deals implements Serializable {
         this.image = image;
     }
 
-    @XmlTransient
-    public List<Products> getProductsList() {
-        return productsList;
-    }
-
-    public void setProductsList(List<Products> productsList) {
-        this.productsList = productsList;
-    }
-
     public Usurs getUserId() {
         return userId;
     }
@@ -255,12 +239,12 @@ public class Deals implements Serializable {
     }
 
     @XmlTransient
-    public List<Products> getProductsList1() {
-        return productsList1;
+    public Collection<Products> getProductsCollection() {
+        return productsCollection;
     }
 
-    public void setProductsList1(List<Products> productsList1) {
-        this.productsList1 = productsList1;
+    public void setProductsCollection(Collection<Products> productsCollection) {
+        this.productsCollection = productsCollection;
     }
 
     @Override

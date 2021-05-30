@@ -5,7 +5,7 @@
  */
 package Business;
 
-import DTO.AuditoriaHugogonzalez;
+import DTO.Auditoriahugogonzalez;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -16,17 +16,17 @@ import javax.ejb.Local;
 @Local
 public interface AuditoriaHugogonzalezService {
 
-    void create(AuditoriaHugogonzalez auditoriaHugogonzalez);
+    void create(Auditoriahugogonzalez auditoriaHugogonzalez);
 
-    void edit(AuditoriaHugogonzalez auditoriaHugogonzalez);
+    void edit(Auditoriahugogonzalez auditoriaHugogonzalez);
 
-    void remove(AuditoriaHugogonzalez auditoriaHugogonzalez);
+    void remove(Auditoriahugogonzalez auditoriaHugogonzalez);
 
-    AuditoriaHugogonzalez find(Object id);
+    Auditoriahugogonzalez find(Object id);
 
-    List<AuditoriaHugogonzalez> findAll();
+    List<Auditoriahugogonzalez> findAll();
 
-    List<AuditoriaHugogonzalez> findRange(int[] range);
+    List<Auditoriahugogonzalez> findRange(int[] range);
 
     int count();
     

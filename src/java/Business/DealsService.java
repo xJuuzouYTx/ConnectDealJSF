@@ -5,10 +5,8 @@
  */
 package Business;
 
-import DTO.AuditoriaHugogonzalez;
+import DTO.Auditoriahugogonzalez;
 import DTO.Deals;
-import DTO.Usurs;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -37,7 +35,7 @@ public interface DealsService {
     
     public boolean findByName(String name);
     
-    public AuditoriaHugogonzalez lastTime(String usuario);
+    public Auditoriahugogonzalez lastTime(String usuario);
     
     public void deteleById (int id);
 }

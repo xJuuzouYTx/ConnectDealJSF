@@ -5,7 +5,7 @@
  */
 package Business;
 
-import DTO.AuditoriaHugogonzalez;
+import DTO.Auditoriahugogonzalez;
 import DTO.Deals;
 import DTO.Usurs;
 import java.io.Serializable;
@@ -90,7 +90,7 @@ public class DealsImplementation implements Serializable{
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         HttpSession httpSession = request.getSession(true);
         Usurs user = (Usurs) httpSession.getAttribute("userId");
-        AuditoriaHugogonzalez auditoria = new AuditoriaHugogonzalez();
+        Auditoriahugogonzalez auditoria = new Auditoriahugogonzalez();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date(System.currentTimeMillis());
         String actualDateFormated = formatter.format(date);
