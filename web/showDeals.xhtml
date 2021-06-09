@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+    >      
+      <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <!--Estilos-->
+        <link href="css/home.css" rel="stylesheet"/>
+    </h:head>
+    <body>
+        <div class="header">
+            <h3 style="font-size: 30px; color: #fff;">Mis negocios</h3>
+        </div>
+        <div class="deals">
+            <div class="DealcardAdd">
+                <div onclick="addDeal()" class="DealcardAdd-text">
+                    <h4><i class="fas fa-plus"></i></h4> 
+                </div>
+                <div class="DealcardAdd-text">
+                    <h4><i class="fas fa-pen"></i></h4> 
+                </div>
+                <div class="DealcardAdd-text" onclick="showDel();">
+                    <h4><i class="fas fa-trash"></i></h4> 
+                </div>
+                <div class="DealcardAdd-check" id="checkAll" style="display:none;">
+                    <input type="checkbox" id="checkBoxAll" onclick="delCheck()"/>
+                </div>
+              
+            </div>
+            <c:when test="#{dealsController.isThereDeals}">
+            <c:forEach items="#{dealsController.myDealsList}" var="p">
+                <div class="Dealcard">
+                    <h:form class="check" style="display:none;">
+                        <input type="checkbox" class="chkCheckBoxId" value="#{p.id}" name="id"/>
+                        <h:commandButton value="Delete" action="#{dealsController.delete()}" onclick="return confirm('¿Deseas continuar.?')"/>
+                    </h:form>
+                    <div class="Dealcard-image" style="background-image: url(#{p.image});"></div>
+                    <div class="Dealcard-text">
+                        <span class="date">4 days ago</span>
+                        <h4><h:outputText value="#{p.name}"/></h4> 
+                    </div>
+                </div>
+            </c:forEach>
+           </c:when>
+            <div id="myModal" class="modal" style="display: none;">
+                <ui:include src="addDeals.xhtml"/>
+            </div>
+        </div>
+         <script>
+            function delCheck(){
+                if ($('#checkBoxAll').is(":checked")){
+                    $('.chkCheckBoxId').prop('checked',true);
+                }else{
+                    $('.chkCheckBoxId').prop('checked',false);
+                };
+            }
+        </script>
+    </body>
+</html>
+
+

@@ -1,0 +1,73 @@
+body{
+    justify-content: center;  
+    padding: 0;
+    margin: 0;
+}
+
+.input{
+    display: block;
+}
+.label {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1c87c9;
+    margin-bottom: 0;
+}
+.userInfo{
+    justify-content: center;
+    padding: 20px 10%;
+    display: inline-block;
+}
+.avatar-preview{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    vertical-align: middle;
+    display: inline-block;
+}
+.inf{
+    border-radius: 20px;
+    background: #fff;
+    align-items: center;
+    display: flex;
+    margin: auto;
+    padding: 20px 5%;
+    display: inline-block;
+}
+.user{
+    padding: 0 20px;
+    display: inline-block;
+    margin: 0;
+}
+
+.user h4{
+    color: #888;
+}
+.count{
+    display: inline-block;
+    padding: 10px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: right;
+}
+.count input{
+    margin: 0;
+    padding: 10px;
+    cursor: pointer;
+    background: transparent;
+    outline: none;
+    border: 2px solid #00ACEE;
+    border-radius: 5px;
+    display: inline-block;
+}
+.count input:hover{
+    background: #00ACEE;
+    color: #fff;
+}
+
+@media screen and (min-width : 400px){
+    .userInfo{
+        padding: 20px 0;
+    }
+}
