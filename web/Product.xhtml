@@ -21,7 +21,7 @@ and open the template in the editor.
              <div>
                     <h:outputLabel>Ingrese nombre del producto</h:outputLabel>
                     <h:inputText  value ="#{sprod.selected.name}"></h:inputText>
-                </div>
+                </div>i
                 <div>
                     <h:outputLabel>Precio</h:outputLabel>
                     <h:inputText  value ="#{sprod.selected.price}"></h:inputText>
@@ -40,11 +40,9 @@ and open the template in the editor.
             <h:outputLabel value="" for=""/>
             <h:inputText id="id" value="" title="" required="true" requiredMessage="" autocomplete="off"/>
             -->
-            <h:commandButton value="{MgtBean.trasnferir()}"/>
+          
 
-            <h>Trae nombre</h>
-            <h:outputLabel value="Resultado" for="res"/>
-            <h:inputText value="#{resProduct.resultado}"/>
+           
         </f:view>
 
 
