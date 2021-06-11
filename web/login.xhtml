@@ -6,10 +6,17 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
     <h:head>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async="true" defer="true"></script>
+       <meta name="google-signin-scope" content="profile email"/>
+        <meta name="google-signin-client_id"
+              content="1073197191603-gv7m66ak3mo55cvr05c8sh6gh0t1icpa.apps.googleusercontent.com"/>
         <title>Connect Deal</title>
 
         <!--Estilos-->
@@ -17,9 +24,10 @@ and open the template in the editor.
         <meta name='viewport' 
               content='width=device-width, initial-scale=0.8, maximum-scale=0.8, 
               user-scalable=0' />
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </h:head>
     <h:body>
+
         <div class="container" >
             <div class="alert" id="alert" style="">
 
@@ -49,12 +57,12 @@ and open the template in the editor.
                     <h:inputText value="#{mgtBean.selected.email}" id="Lemail"/>
                     <h:inputSecret value="#{mgtBean.selected.password}" id="Lpassword"/>
                     <h:commandButton class="button" value="Iniciar Sesion" action="#{mgtBean.login()}" />
+
                     <div class="shared-panel">
-                        <a target="_blank" class="fab fa-google" title="Google"></a>	
-                        <a target="_blank" class="fab fa-twitter" title="Twitter"></a>
-                        <a target="_blank" class="fab fa-facebook" title="Facebook+"></a>	
+
                     </div>
-                    <div id="captcha" class="captcha"></div>
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                   
                 </h:form>
                 <h:form  class="signUpForm">
                     <h2>Registrarse</h2>
@@ -65,12 +73,42 @@ and open the template in the editor.
                     <h:inputSecret id="Rpassword"/>
                     <h:commandButton class="button" value="Registrarme"/>
                     <div class="shared-panel">
-                        <a target="_blank" class="fab fa-google" title="Google"></a>	
-                        <a target="_blank" class="fab fa-twitter" title="Twitter"></a>
-                        <a target="_blank" class="fab fa-facebook" title="Facebook+"></a>	
+                        <a target="_blank" class="fab fa-facebook" title="Facebook"></a>	
                     </div>
                 </h:form>
+                <h:form style="display: none" id="fmg">
+                    <input id="Goname" name="Goname" />
+                    <input id="Gemail" name="Gemail" />
+                    <h:commandButton id="googleA" value="gg" class="googleA" action="#{mgtBean.googleA()}"/>
+                    
+                </h:form>
+                
+                
+                <script>
+                    //sision de google
+                   // var auth2 = gapi.auth2.getAuthInstance();
+                       // auth2.signOut().then(function () {
+                      //  console.log('User signed out.');
+                    //});
+                    //google callback. This function will redirect to our login servlet
+                    function onSignIn(googleUser) {
+                        var profile = googleUser.getBasicProfile();
+                        console.log('ID: ' + profile.getId());
+                       
+                       document.getElementById("Goname").value = profile.getName();
+                       document.getElementById("Gemail").value = profile.getEmail();
+                       
+                       console.log('Name: '+profile.getName());
+                       console.log('Email: '+profile.getEmail());
+                        //do not post all above info to the server because that is not secure.
+                        //just send the id_toke   
+                        var x = document.getElementsByClassName("googleA");
+                        x[0].click();
+                    }
+
+                </script>	
             </div>
+
         </div>
         <div id="load" class="load">
             <div class="loader"></div>

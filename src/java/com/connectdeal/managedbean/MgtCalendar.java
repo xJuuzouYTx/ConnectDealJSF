@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import org.primefaces.event.SelectEvent;
 
 /**
  *
@@ -22,7 +23,17 @@ public class MgtCalendar {
      * Creates a new instance of MgtCalendar
      */
     private Date date;
+    private String fechaS = "";
 
+    public String getFechaS() {
+        return fechaS;
+    }
+
+    public void setFechaS(String fechaS) {
+        this.fechaS = fechaS;
+    }
+    
+    
     public void setDate(Date date) {
         this.date = date;
     }
@@ -30,10 +41,11 @@ public class MgtCalendar {
     public Date getDate() {
         return date;
     }
+    public void ActFecha(SelectEvent event){
+        SimpleDateFormat fecha = new SimpleDateFormat("EEEEE dd MMMMM yyyy");
+        StringBuilder CFecha = new StringBuilder(fecha.format(event.getObject()));
+        fechaS = CFecha.toString();
+    } 
     
-    public void click(Date date) {
-        SimpleDateFormat DF = new SimpleDateFormat("dd/mm/yy");
-        System.out.println(DF.format(date));
-    }
     
 }

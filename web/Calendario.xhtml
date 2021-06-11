@@ -8,20 +8,52 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-     
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
     
     <h:head>
         <title>seleccion fechas</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <body>
-      <!--
-        <h:panelGrid columns="2" cellspacing="1">
-            <p:outputLabel>Calendario</p:outputLabel>
-            <p:calendar value="#{mgtCalendar.date}"></calendar>
-        </h:panelGrid>
-        <p:commandButton value="Enviar" action="#{mgtCalendar.click(Calendar.date)}"></p:commandButton>
-    -->
-     </body>
+    <h:body>
+        <script type="text/javascript">
+            PrimeFaces.locales['es']={
+                closeText: 'cerrar',
+                prevText: 'anterior',
+                nextText: 'siguiente',
+                monthNames:['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+                monthNameShort:['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+                dayNames:['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'],
+                dayNameShort:['Dom','Lun','Mar','Mie','Jue','Vie','sab'],
+                dayNamesMin:['D','L','M','W','J','V','S'],
+                weekHeader: 'semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix:'',
+                timeOnlyTitle: 'Solo hora',
+                timeText: 'Tiempo',
+                hourText:'Hora',
+                minuteText:'Minuto',
+                secondText:'Segundo',
+                currentText:'Fecha actual',
+                ampm: false,
+                month:'Mes',
+                week:'Semana',
+                day:'Dia',
+                allDayText:'Todo el dia'
+               
+            };
+            </script>
+        <h:form id="form">
+            <p:calendar value="#{mgtCalendar.date}" locale="es" pattern="dd/MM/yyyy">
+                <p:ajax event="dateSelect" listener="#{mgtCalendar.ActFecha}" update=":form:fs"/>
+            </p:calendar>
+            <br/>
+            <br/>
+            <h:outputText id="fs" value="#{mgtCalendar.fechaS}"/>
+            <h:commandButton value="Guardar Fecha "></h:commandButton>
+        </h:form>
+        
+     </h:body>
 </html>

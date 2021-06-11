@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.conecctdeal.sessionbeans;
 
 import com.connectdeal.entity.Usurs;
@@ -12,6 +7,7 @@ import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.StoredProcedureQuery;
+import Business.UsursServices;
 
 /**
  *
@@ -19,7 +15,7 @@ import javax.persistence.StoredProcedureQuery;
  *
  */
 @Stateless
-public class UsursFacade extends AbstractFacade<Usurs> implements UsursFacadeLocal {
+public class UsursFacade extends AbstractFacade<Usurs> implements UsursServices {
 
     @PersistenceContext(unitName = "ConnectDealv2PU")
     private EntityManager em;
@@ -94,5 +90,6 @@ public class UsursFacade extends AbstractFacade<Usurs> implements UsursFacadeLoc
         Usurs us = (Usurs) query.getSingleResult();
         return us.getId();
     }
+   
 
 }

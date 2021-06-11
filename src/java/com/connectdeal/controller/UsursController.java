@@ -1,10 +1,9 @@
 package com.connectdeal.controller;
 
-import com.conecctdeal.sessionbeans.UsursFacade;
 import com.connectdeal.entity.Usurs;
 import com.connectdeal.controller.util.JsfUtil;
 import com.connectdeal.controller.util.PaginationHelper;
-
+import com.conecctdeal.sessionbeans.UsursFacade;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -26,7 +25,7 @@ public class UsursController implements Serializable {
     private Usurs current;
     private DataModel items = null;
     @EJB
-    private UsursFacade ejbFacade;
+    private com.conecctdeal.sessionbeans.UsursFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -83,10 +82,10 @@ public class UsursController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsursCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/ConecctDeal").getString("UsursCreated"));
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/ConecctDeal").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -100,10 +99,10 @@ public class UsursController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsursUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/ConecctDeal").getString("UsursUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/ConecctDeal").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -133,9 +132,9 @@ public class UsursController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsursDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/ConecctDeal").getString("UsursDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/ConecctDeal").getString("PersistenceErrorOccured"));
         }
     }
 

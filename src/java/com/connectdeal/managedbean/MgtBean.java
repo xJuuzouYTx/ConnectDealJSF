@@ -5,8 +5,6 @@
  */
 package com.connectdeal.managedbean;
 
-import com.conecctdeal.sessionbeans.AuditoriaPerezFacadeLocal;
-import com.conecctdeal.sessionbeans.UsursFacadeLocal;
 import com.connectdeal.controller.util.JsfUtil;
 import com.connectdeal.entity.AuditoriaPerez;
 import com.connectdeal.entity.Usurs;
@@ -28,29 +26,36 @@ import javax.faces.view.facelets.FaceletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import Business.UsursServices;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
+
+
 /**
  *
  * @author Administrator
  */
 @Named(value = "mgtBean")
-@Stateless 
+@Stateless
 public class MgtBean {
 
     String message = "";
     private String code;
     private Usurs current;
-    private AuditoriaPerez crrt;
+
     private int selectedItemIndex;
     private static HttpSession httpSession;
     @EJB
-    private UsursFacadeLocal ejbFacade;
-    private AuditoriaPerezFacadeLocal ejb;
-    public void login(){
+    private UsursServices ejbFacade;
+
+    public void login() {
         try {
             String email = current.getEmail();
             String password = current.getPassword();
             System.out.println(email);
             System.err.println(password);
+
             if (this.ejbFacade.isVerified(email, password) == 1) {
                 FacesContext context = FacesContext.getCurrentInstance();
                 HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
@@ -58,8 +63,10 @@ public class MgtBean {
                 httpSession.setAttribute("userId", this.ejbFacade.getUserId(email));
                 FacesMessage facesMessage = new FacesMessage("Logeado Correctamente");
                 FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-                
+
                 FacesContext.getCurrentInstance().getExternalContext().redirect("/ConnectDealv2/Usuario.xhtml");
+                //google
+              
             } else {
                 FacesMessage facesMessage = new FacesMessage("Error al inciiar");
                 FacesContext.getCurrentInstance().addMessage(null, facesMessage);
@@ -70,15 +77,54 @@ public class MgtBean {
         }
     }
     
-    public void modificar(){
-        
-        if ( ! ejbFacade.modificar(current.getEmail(),current.getName(),current.getLastname(),current.getCedula())){
-            System.out.print("NO Registra");
+    public boolean logGoogle(String Gemail, String Goname) throws IOException{
+        if(this.ejbFacade.isRegistered(Gemail)){
+            FacesContext context = FacesContext.getCurrentInstance();
+            HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+            HttpSession httpSession = request.getSession(false);
+            httpSession.setAttribute("userId",(this.ejbFacade.find(this.ejbFacade.getUserId(Gemail))));
+            
+            System.out.println("correcto");
+            return true;
+                   
         }else{
-             System.out.print("Registra");
+            Usurs user = new Usurs();
+            user.setEmail(Gemail);
+            user.setName(Goname);
+            ejbFacade.create(user);
+            System.out.println("falso");
         }
+        return true;
     }
     
+    public void googleA() throws IOException{
+         FacesContext context = FacesContext.getCurrentInstance();
+         String Goname = context.getExternalContext().getRequestParameterMap().get("Goname");
+         String Gemail = context.getExternalContext().getRequestParameterMap().get("Gemail");
+         System.out.print(Goname+"  "+Gemail);
+         current.setName(Goname);
+         current.setEmail(Gemail);
+        
+         if(logGoogle(Gemail, Goname)){
+             FacesContext.getCurrentInstance().getExternalContext().redirect("/ConnectDealv2/Usuario.xhtml");
+         }else{
+             FacesContext.getCurrentInstance().getExternalContext().redirect("/ConnectDealv2/");
+         }
+
+    } 
+    
+    
+
+
+    public void modificar() {
+
+        if (!ejbFacade.modificar(current.getEmail(), current.getName(), current.getLastname(), current.getCedula())) {
+            System.out.print("NO Registra");
+        } else {
+            System.out.print("Registra");
+        }
+    }
+
     public Usurs getSelected() {
         if (current == null) {
             current = new Usurs();
@@ -86,6 +132,5 @@ public class MgtBean {
         }
         return current;
     }
-    
 
 }

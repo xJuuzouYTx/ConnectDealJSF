@@ -17,9 +17,19 @@ and open the template in the editor.
 
       
         <f:view>
-            <h>nombre</h>
-            <h:outputLabel value="{MgtBean.Nombre}" for="nombrep"/>
-            <h:inputText id="nombrep" value="#{mgtBean.nombre}"  required="true"  autocomplete="off"/>
+            <h>Seccion de productos</h>
+             <div>
+                    <h:outputLabel>Ingrese nombre del producto</h:outputLabel>
+                    <h:inputText  value ="#{sprod.selected.name}"></h:inputText>
+                </div>
+                <div>
+                    <h:outputLabel>Precio</h:outputLabel>
+                    <h:inputText  value ="#{sprod.selected.price}"></h:inputText>
+                </div>
+            <div>
+                <h:commandButton action="#{sprod.modificar()}" value="Actualizar Datos"></h:commandButton>
+                  <!--  <h:commandLink action="{auditoriaPerezController.create()}" -->
+                </div>  
             <!--
             <h:outputLabel value="" for=""/>
             <h:inputText id="id" value="" title="" required="true" requiredMessage="" autocomplete="off"/>

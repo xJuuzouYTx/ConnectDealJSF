@@ -31,6 +31,18 @@ public class AuthenticationFilter implements Filter{
                 ((HttpServletResponse) resp).sendRedirect("/ConnectDealv2");
                 
             }
+            if(((HttpServletRequest) req).getRequestURI().equals("/ConnectDealv2/Calendario.xhtml")){
+                ((HttpServletResponse) resp).sendRedirect("/ConnectDealv2");   
+            }
+            if(((HttpServletRequest) req).getRequestURI().equals("/ConnectDealv2/Product.xhtml")){
+                ((HttpServletResponse) resp).sendRedirect("/ConnectDealv2");
+            }
+            if(((HttpServletRequest) req).getRequestURI().equals("/ConnectDealv2/index.xhtml")){
+                ((HttpServletResponse) resp).sendRedirect("/ConnectDealv2");
+            }
+            if(((HttpServletRequest) req).getRequestURI().equals("/ConnectDealv2/addDeal.xhtml")){
+                ((HttpServletResponse) resp).sendRedirect("/ConnectDealv2");
+            }
         }else{
             if(((HttpServletRequest) req).getRequestURI().equals("/ConnectDealv2/")){
                 ((HttpServletResponse) resp).sendRedirect("/ConnectDealv2/Usuario.xhtml");

@@ -9,9 +9,21 @@ and open the template in the editor.
     <h:head>
         <title>Perfil</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <h:outputStylesheet name="css/styles.css" />
     </h:head>
     <h:body>
         <h:form>
+            
+            <script>
+                function sletras(e){
+                    key =e.keyCode || e.which;
+                    teclado = String.fromCharCode(key).toLowerCase();
+                    letras="abcdef-ghijklmnñopqrstuvwxyz";
+                    especiales = "8-37-38-46-164"
+    
+}
+                }
+            </script>
             <h:outputLabel>Actualización de datos</h:outputLabel>
 
             <div class="container">
@@ -35,8 +47,9 @@ and open the template in the editor.
                 </div>
                 <div>
                     <h:commandButton action="#{mgtBean.modificar()}" value="Actualizar Datos"></h:commandButton>
-                    <h:commandLink action="#{auditoriaPerezController.create()}"
-                </div>
+                  <!--  <h:commandLink action="{auditoriaPerezController.create()}" -->
+                </div>  
+                <a href="Calendario.xhtml">oprime fecha</a>
                 
 
 
